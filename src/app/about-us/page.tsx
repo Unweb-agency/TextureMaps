@@ -15,7 +15,7 @@ const page = () => {
       </div>
 
       <Container>
-        <div className='flex flex-col md:flex-row justify-center items-center text-center mt-10'>
+        <div className='flex flex-col md:flex-row justify-center items-center text-center mt-10 gap-y-8'>
           <Image
             src={modelWithOutfit}
             alt='model'

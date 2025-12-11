@@ -22,6 +22,7 @@ const MeetOurFounderCard = () => {
                         height={1000}
                         width={1000}
                         className='max-w-[500px] w-full h-auto object-cover border-b-4 border-b-[#D9D9D9]]'
+                        loading='lazy'
                     />
                 </div>
 
