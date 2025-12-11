@@ -14,7 +14,7 @@ const ThreeDMockups = () => {
                 <h3 className='uppercase bg-linear-to-b from-[#0772DC] to-[#092037] font-bold bg-clip-text text-transparent text-[17px] md:text-[18px] lg:text-[20px]'> 3d mockups & high-end animations </h3>
 
                 <p className='text-[#D9D9D9] font-bold leading-normal text-sm md:text-base lg:text-[18px] mt-3'>
-                    Bring your pieces to life before production — cutting costs and time paired with next-level visual storytelling for campaigns, lookbooks, and digital experiences.
+                    Bring your pieces to life before production — cutting costs and time, paired with next-level visual storytelling for campaigns, lookbooks, and digital experiences. 
                 </p>
 
                 {/* Video Player */}

@@ -21,8 +21,8 @@ const navigationLinks = [
     {
         name: "Connect",
         inputs: [
-            { link: "LinkedIn", href: "#" },
-            { link: "Instagram", href: "#" },
+            { link: "LinkedIn", href: "https://www.linkedin.com/in/sachin-sureka-811845152/" },
+            { link: "Instagram", href: "https://www.instagram.com/sachin_sureka/" },
         ]
     },
     {
@@ -47,7 +47,7 @@ const Footer = () => {
                                     <p className='text-white font-bold text-base md:text-[16.5px] lg:text-[17px]'> {data.name} </p>
                                     <div className='flex flex-col leading-snug'>
                                         {data.inputs.map((item, idx) => (
-                                            <Link href={`${item.href}`} key={idx}>
+                                            <Link href={`${item.href}`} key={idx} target='_blank'>
                                                 <span className='font-medium text-white hover:text-white/90 hover:underline transition-all duration-200 ease-in-out text-sm md:text-[15px] lg:text-base'> {item.link} </span>
                                             </Link>
                                         ))}
@@ -59,7 +59,7 @@ const Footer = () => {
 
                     <div className='flex flex-col justify-start items-start'>
                         <h1 className='font-extrabold text-white text-5xl md:text-6xl'> Let&apos;s Talk ! </h1>
-                        <Link href={"#"} className='mt-2'>
+                        <Link href={"contact"} className='mt-2'>
                             <Image src={arrow_gradient} alt='arrow' height={1000} width={1000} className='h-[55px] sm:h-[60px] md:h-[65px] lg:h-[70px] w-auto' />
                         </Link>
                     </div>

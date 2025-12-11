@@ -8,7 +8,7 @@ const services = [
     { title: "Fashion Design", content: "Custom designs that speaks your brand", imgURL: "/images/graphic_design.png"},
     { title: "Prints", content: "Exclusive artworks designed for your brand", imgURL: "/images/prints.png"},
     { title: "Graphics", content: "Captivating graphics for visual storytelling", imgURL: "/images/graphics.png"},
-    { title: "Teach Pack Creation", content: "Precise, production-ready techpack that brings clarity to manufacturers.", imgURL: "/images/tech_pack_creation.png"},
+    { title: "Techpack Creation", content: "Precise, production-ready techpack that brings clarity to manufacturers.", imgURL: "/images/tech_pack_creation.png"},
     { title: "Virtual/Physical Fitting", content: "Perfecting Fit, Physically and Virtually.", imgURL: "/images/virtual_fitting.png"},
     { title: "Ecom-Imagery", content: "High-converting product shots complimenting Brand story.", imgURL: "/images/ecom_imagery.png"},
 ]
@@ -29,7 +29,7 @@ const OurServices = () => {
                 {
                     services.map((serviceData, index) => (
                         <div className='flex flex-col justify-between items-center text-center' key={index}>
-                            <h3 className='uppercase bg-linear-to-b from-[#0772DC] to-[#092037] font-bold bg-clip-text text-transparent text-[17px] md:text-[18px] lg:text-[20px]'> {serviceData.title} </h3>
+                                <h3 className='uppercase text-[#0772DC] font-bold text-[17px] md:text-[18px] lg:text-[20px]'> {serviceData.title} </h3>
                             <p className='text-[#D9D9D9] font-bold leading-normal text-sm md:text-base lg:text-[18px] mt-3'> {serviceData.content} </p>
                             <Image
                             src={`${serviceData.imgURL}`}

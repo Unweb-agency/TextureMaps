@@ -3,8 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const socialIcons = [
-    { name: "linkedin", href:"#", iconImageURL: "/icons/icon_instagram.png" },
-    { name: "instagram", href:"#", iconImageURL: "/icons/icon_linkedin.png" },
+    { name: "linkedin", href:"https://www.linkedin.com/in/sachin-sureka-811845152/", iconImageURL: "/icons/icon_linkedin.png" },
+    { name: "instagram", href:"https://www.instagram.com/sachin_sureka/", iconImageURL: "/icons/icon_instagram.png" },
 ]
 
 const SocialBar = () => {
@@ -28,7 +28,7 @@ const SocialBar = () => {
         <div className='flex flex-row justify-center items-center gap-4 sm:gap-5 md:gap-6'>
             {
                 socialIcons.map((icon, index) => (
-                    <Link href={`${icon.href}`} key={index}>
+                    <Link href={`${icon.href}`} key={index} target='_blank'>
                         <Image
                         src={`${icon.iconImageURL}`}
                         alt={`${icon.name}`}
