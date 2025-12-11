@@ -47,7 +47,7 @@ const Footer = () => {
                                     <p className='text-white font-bold text-base md:text-[16.5px] lg:text-[17px]'> {data.name} </p>
                                     <div className='flex flex-col leading-snug'>
                                         {data.inputs.map((item, idx) => (
-                                            <Link href={`${item.href}`} key={idx} target='_blank'>
+                                            <Link href={`${item.href}`} key={idx}>
                                                 <span className='font-medium text-white hover:text-white/90 hover:underline transition-all duration-200 ease-in-out text-sm md:text-[15px] lg:text-base'> {item.link} </span>
                                             </Link>
                                         ))}
