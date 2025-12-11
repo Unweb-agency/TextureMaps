@@ -12,7 +12,7 @@ const ModelsGroupBanner = () => {
                     alt='models group banner'
                     height={1000}
                     width={1000}
-                    className='object-cover w-full h-full'
+                    className='ml-3 sm:ml-3.5 object-cover w-full h-full'
                 />
             </Container>
 
