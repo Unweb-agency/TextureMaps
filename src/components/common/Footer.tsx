@@ -13,7 +13,7 @@ const navigationLinks = [
         name: "Quick Links",
         inputs: [
             { link: "Home", href: "/" },
-            { link: "Services", href: "/services" },
+            // { link: "Services", href: "#services" },
             { link: "About", href: "/about-us" },
             { link: "Contact", href: "/contact" },
         ]

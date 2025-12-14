@@ -1,213 +1,172 @@
-import HeroCommon from '@/style/HeroCommon'
-import React from 'react'
+'use client'
+import React, { useState, useEffect } from 'react' 
+import { motion, AnimatePresence } from 'framer-motion'
+import Container from '@/style/Container'
 import Image from 'next/image'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { PencilLine } from 'lucide-react'
+import { usePathname, useSearchParams } from 'next/navigation' 
+import { service_data } from '../../../jsons/service-data'
+import HeroCommon from '@/style/HeroCommon'
 
-// BUNDLE 1 => contains data for "Print" and "Graphics"
-const bundle1 = [
-    // Prints
-    {
-        title: "Prints",
-        subpara: "Have a project in mind? Questions? Just want to say hello? We’re here to help you build smarter with 3D + AI solutions.",
-        href: "/services/prints",
-        categories: [
-            { name: "Kids", imageURL: "/services/kids-photo.jpg" },
-            { name: "Men", imageURL: "/services/male-photo.jpg" },
-            { name: "Women", imageURL: "/services/female-photo.jpg" },
-        ]
-    },
-    //Graphics
-    {
-        title: "Graphics",
-        subpara: "Have a project in mind? Questions? Just want to say hello? We're here to help you build smarter with 3D + AI solutions.",
-        href: "/services/graphics",
-        categories: [
-            { name: "Kids", imageURL: "/services/kids-photo.jpg" },
-            { name: "Men", imageURL: "/services/male-photo.jpg" },
-            { name: "Women", imageURL: "/services/female-photo.jpg" },
-        ]
-    },
-]
+// const filterOptions = ["kids", "men", "women"]
 
-// BUNDLE 2 => contains data for "E-commerce Imagery" and "Techpack Creation"
-const bundle2 = [
-    // E-commernce Imagery
-    {
-        title: "E-commerce Imagery",
-        subpara: "Have a project in mind? Questions? Just want to say hello? We’re here to help you build smarter with 3D + AI solutions.",
-        href: "/services/ecom-imagery",
-        categories: [
-            { name: "Kids", imageURL: "/services/kids-photo.jpg" },
-            { name: "Men", imageURL: "/services/male-photo.jpg" },
-            { name: "Women", imageURL: "/services/female-photo.jpg" },
-        ]
-    },
-    // Techpack Creation
-    {
-        title: "Techpack Creation",
-        subpara: "Have a project in mind? Questions? Just want to say hello? We’re here to help you build smarter with 3D + AI solutions.",
-        href: "/services/techpack-creation",
-        categories: [
-            { name: "Kids", imageURL: "/services/kids-photo.jpg" },
-            { name: "Men", imageURL: "/services/male-photo.jpg" },
-            { name: "Women", imageURL: "/services/female-photo.jpg" },
-        ]
-    },
-]
-
-// BUNDLE 3 => contains data for "Fashion Design" and "Virtual/Physical Fitting"
-const bundle3 = [
-    // Fashion Design
-    {
-        title: "Fashion Design",
-        subpara: "Have a project in mind? Questions? Just want to say hello? We’re here to help you build smarter with 3D + AI solutions.",
-        href: "/services/fashion-design",
-        categories: [
-            { name: "Kids", imageURL: "/services/kids-photo.jpg" },
-            { name: "Men", imageURL: "/services/male-photo.jpg" },
-            { name: "Women", imageURL: "/services/female-photo.jpg" },
-        ]
-    },
-    // Virtual/Physical Fitting
-    {
-        title: "Virtual/Physical Fitting",
-        subpara: "Have a project in mind? Questions? Just want to say hello? We’re here to help you build smarter with 3D + AI solutions.",
-        href: "/services/virtual-physical-fitting",
-        categories: [
-            { name: "Kids", imageURL: "/services/kids-photo.jpg" },
-            { name: "Men", imageURL: "/services/male-photo.jpg" },
-            { name: "Women", imageURL: "/services/female-photo.jpg" },
-        ]
-    },
+const dropdownOptions = [
+    "Fashion Design",
+    "Prints",
+    "Graphics",
+    "Techpack Creation",
+    "E-commerce Imagery",
+    "Virtual/Physical Fitting"
 ]
 
 const Page = () => {
+    // const [activeFilter, setActiveFilter] = useState("men")
+    const pathname = usePathname() 
+    const searchParams = useSearchParams()
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+    
+    const [selectedCategory, setSelectedCategory] = useState(dropdownOptions[0])
+
+    useEffect(() => {
+        if (!pathname) return;
+
+        if (searchParams.has("fashion-design")) {
+            setSelectedCategory("Fashion Design")
+        } else if (searchParams.has("prints")) {
+            setSelectedCategory("Prints")
+        } else if (searchParams.has("graphics")) {
+            setSelectedCategory("Graphics")
+        } else if (searchParams.has("techpack-creation")) {
+            setSelectedCategory("Techpack Creation")
+        } else if (searchParams.has("ecom-imagery")) {
+            setSelectedCategory("E-commerce Imagery")
+        } else if (searchParams.has("virtual-physical-fitting")) {
+            setSelectedCategory("Virtual/Physical Fitting")
+        }
+    }, [pathname])
+
+    const currentServiceData = service_data.find((item) => 
+        item.service_name === selectedCategory || 
+        (selectedCategory === "Techpack Creation" && item.service_name === "Techpack Creations")
+    );
+
+    const displayImages = currentServiceData ? currentServiceData.serviceImages : [];
+
     return (
-        <main className='relative'>
-            <div className='px-4 md:px-6 mt-10 sm:mt-5 translate-y-0 md:-mt-24 z-10'>
-                <HeroCommon title='Services' para='We help fashion brands simplify processes, save time, and stay future-ready with cutting-edge digital solutions powered by 3D and AI.' />
+        <main className='relative px-4 md:px-6 pb-20'>
+
+            <div className='mt-10 sm:mt-5 translate-y-0 md:-mt-24 z-10'>
+                <HeroCommon title='Our Services' para='What began as one person&apos;s passion to merge creativity with innovation has grown into a brand that&apos;s redefining how the world sees and builds fashion — smarter, faster, and more sustainable.' />
             </div>
 
+            <div className='w-full mt-6 flex flex-col gap-y-1.5 justify-center items-center text-center bg-linear-to-b from-[#043D76] to-[#0772DC] p-4 md:p-6 rounded-xl md:rounded-2xl lg:rounded-3xl backdrop-blur-lg'>
+                <h1 className='font-bold text-white text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]'>
+                   {currentServiceData ? currentServiceData.service_name : selectedCategory}
+                </h1>
+                    <p className='font-bold text-[#ACACAC] text-sm sm:text-base md:text-[17px] lg:text-[18px]'>
+                    {currentServiceData ? currentServiceData.service_desc : ""}
+                </p>
+            </div>
 
-            {/* BUNDLE - 1 */}
-            <div className='w-full px-4 md:px-6 mt-6 md:mt-8'>
-                <div className='bg-linear-to-b from-[#0772DC] to-[#03122100] rounded-2xl md:rounded-3xl lg:rounded-4xl flex flex-col justify-center items-center gap-y-[60px] sm:gap-y-[70px] md:gap-y-[85px] lg:gap-y-[100px] p-4 sm:p-6 md:p-10 lg:p-[72px]'>
-                    {
-                        bundle1.map((service, index) => (
-                            <div className='w-full flex flex-col justify-center items-center' key={index}>
-                                <h2 className='text-white font-semibold uppercase text-[24px] sm:text-[26px] md:text-[28px] lg:text-[30px]'> {service.title} </h2>
-
-                                <p className='font-normal text-white mt-1.5 leading-tight max-w-[750px] w-full text-center text-base sm:text-[17px] md:text-[18px] lg:text-[20px]'> {service.subpara} </p>
-
-                                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full mt-8 sm:mt-10 md:mt-12 lg:mt-14 gap-10'>
-                                    {service.categories.map((category, index) => (
-                                        <div className='w-full flex flex-col justify-center items-center text-center gap-y-2' key={index}>
-                                            {/* <p className='font-bold text-white text-[18px] sm:text-[20px] md:text-[22.5px] lg:text-[24px] uppercase'> {category.name} </p> */}
-                                            <div className='group relative flex flex-row'>
-                                                <Image
-                                                    src={`${category.imageURL}`}
-                                                    alt={`${category.name}`}
-                                                    height={1000}
-                                                    width={1000}
-                                                    className='max-w-[400px] w-full aspect-square object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl transition-all duration-200 ease-in-out group-hover:shadow-[8px_8px_16px_#0772DC]'
-                                                />
-                                                <div className='absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl pointer-events-none' />
-                                                <Link href={`${service.href}`}>
-                                                    <Button className='opacity-0 group-hover:opacity-100 px-8 h-12 md:px-10 md:h-14 rounded-full cursor-pointer absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#0772DC] font-bold bg-[#031221] text-sm md:text-base lg:text-[18px] shadow-[inset_3px_3px_5px_#0772DC,inset_-3px_3px_5px_#0772DC] hover:bg-black transition-all ease-in-out duration-200 hover:text-white'>
-                                                        Explore
-                                                    </Button>
-                                                </Link>
-                                            </div>
-                                        </div>
-
+            {/* Service Category Filter */}
+            <div className='fixed right-5 md:right-8 top-1/2 -translate-y-1/2 z-50 flex flex-col items-end'>
+                <div className='absolute right-0 md:right-4 top-0 flex flex-col items-end'>
+                    <button
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        className={`flex items-center justify-center p-3.5 rounded-full border transition-all duration-300 ${isDropdownOpen ? 'bg-[#0772DC] border-[#0772DC] text-white shadow-[0_0_15px_#0772DC]' : 'bg-black/80 border-white/20 text-white hover:bg-white/5'} cursor-pointer shadow-[1px_1px_16px_#0772dc]`}
+                    >
+                        <PencilLine className='h-3 sm:h-3.5 md:h-4 w-auto' />
+                    </button>
+                    <AnimatePresence>
+                        {isDropdownOpen && (
+                            <motion.div
+                                initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                                transition={{ duration: 0.2 }}
+                                className='mt-3 w-64 origin-top-right rounded-xl bg-[#031221]/90 backdrop-blur-md border border-white/10 shadow-xl overflow-hidden ring-1 ring-black/5'
+                            >
+                                <div className='flex flex-col p-1.5'>
+                                    {dropdownOptions.map((option, index) => (
+                                        <button
+                                            key={index}
+                                            className='group flex w-full items-center rounded-lg px-3 py-2.5 text-sm text-gray-200 hover:bg-[#0772DC] hover:text-white transition-colors duration-200 text-left cursor-pointer'
+                                            onClick={() => {
+                                                setSelectedCategory(option)
+                                                console.log(`${option} selected`)
+                                                setIsDropdownOpen(false)
+                                            }}
+                                        >
+                                            <span className='font-medium'>{option}</span>
+                                        </button>
                                     ))}
                                 </div>
-                            </div>
-                        ))
-                    }
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
             </div>
 
-
-            {/* BUNDLE - 2 */}
-            <div className='w-full px-4 md:px-6 mt-6 md:mt-8'>
-                <div className='bg-linear-to-b from-[#0772DC] to-[#03122100] rounded-2xl md:rounded-3xl lg:rounded-4xl flex flex-col justify-center items-center gap-y-[60px] sm:gap-y-[70px] md:gap-y-[85px] lg:gap-y-[100px] p-4 sm:p-6 md:p-10 lg:p-[72px]'>
+            {/* Filter */}
+            {/* <div className='w-full flex justify-center items-center mt-14'>
+                <div className='flex flex-row justify-center items-center text-center max-w-[700px] w-full bg-black/40 rounded-full'>
                     {
-                        bundle2.map((service, index) => (
-                            <div className='w-full flex flex-col justify-center items-center' key={index}>
-                                <h2 className='text-white font-semibold uppercase text-[24px] sm:text-[26px] md:text-[28px] lg:text-[30px]'> {service.title} </h2>
-
-                                <p className='font-normal text-white mt-1.5 leading-tight max-w-[750px] w-full text-center text-base sm:text-[17px] md:text-[18px] lg:text-[20px]'> {service.subpara} </p>
-
-                                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full mt-8 sm:mt-10 md:mt-12 lg:mt-14 gap-10'>
-                                    {service.categories.map((category, index) => (
-                                        <div className='w-full flex flex-col justify-center items-center text-center gap-y-2' key={index}>
-                                            {/* <p className='font-bold text-white text-[18px] sm:text-[20px] md:text-[22.5px] lg:text-[24px] uppercase'> {category.name} </p> */}
-                                            <div className='group relative flex flex-row'>
-                                                <Image
-                                                    src={`${category.imageURL}`}
-                                                    alt={`${category.name}`}
-                                                    height={1000}
-                                                    width={1000}
-                                                    className='max-w-[400px] w-full aspect-square object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl transition-all duration-200 ease-in-out group-hover:shadow-[8px_8px_16px_#0772DC]'
-                                                />
-                                                <div className='absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl pointer-events-none' />
-                                                <Link href={`${service.href}`}>
-                                                    <Button className='opacity-0 group-hover:opacity-100 px-8 h-12 md:px-10 md:h-14 rounded-full cursor-pointer absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#0772DC] font-bold bg-[#031221] text-sm md:text-base lg:text-[18px] shadow-[inset_3px_3px_5px_#0772DC,inset_-3px_3px_5px_#0772DC] hover:bg-black transition-all ease-in-out duration-200 hover:text-white'>
-                                                        Explore
-                                                    </Button>
-                                                </Link>
-                                            </div>
-                                        </div>
-
-                                    ))}
-                                </div>
-                            </div>
+                        filterOptions.map((option, index) => (
+                            <p
+                                onClick={() => setActiveFilter(option)}
+                                className='relative text-white font-bold p-4 rounded-full w-full cursor-pointer text-xs sm:text-sm md:text-[15px] capitalize'
+                                key={index}
+                            >
+                                {activeFilter === option && (
+                                    <motion.span
+                                        layoutId="watery-slider"
+                                        className='absolute inset-0 bg-linear-to-tl from-[#0772DC] to-[#031221] scale-115 rounded-full'
+                                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                    />
+                                )}
+                                <span className='relative z-10'>
+                                    {option}
+                                </span>
+                            </p>
                         ))
                     }
                 </div>
-            </div>
+            </div> */}
 
+            {/* <p className='text-white italic font-semibold text-xl md:text-2xl lg:text-3xl mt-8 sm:mt-10 md:mt-12 lg:mt-14 mb-8'>
+                {selectedCategory}
+            </p> */}
 
-            {/* BUNDLE - 3 */}
-            <div className='w-full px-4 md:px-6 mt-6 md:mt-8'>
-                <div className='bg-linear-to-b from-[#0772DC] to-[#03122100] rounded-2xl md:rounded-3xl lg:rounded-4xl flex flex-col justify-center items-center gap-y-[60px] sm:gap-y-[70px] md:gap-y-[85px] lg:gap-y-[100px] p-4 sm:p-6 md:p-10 lg:p-[72px]'>
-                    {
-                        bundle3.map((service, index) => (
-                            <div className='w-full flex flex-col justify-center items-center' key={index}>
-                                <h2 className='text-white font-semibold uppercase text-[24px] sm:text-[26px] md:text-[28px] lg:text-[30px]'> {service.title} </h2>
-
-                                <p className='font-normal text-white mt-1.5 leading-tight max-w-[750px] w-full text-center text-base sm:text-[17px] md:text-[18px] lg:text-[20px]'> {service.subpara} </p>
-
-                                <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full mt-8 sm:mt-10 md:mt-12 lg:mt-14 gap-10'>
-                                    {service.categories.map((category, index) => (
-                                        <div className='w-full flex flex-col justify-center items-center text-center gap-y-2' key={index}>
-                                            {/* <p className='font-bold text-white text-[18px] sm:text-[20px] md:text-[22.5px] lg:text-[24px] uppercase'> {category.name} </p> */}
-                                            <div className='group relative flex flex-row'>
-                                                <Image
-                                                    src={`${category.imageURL}`}
-                                                    alt={`${category.name}`}
-                                                    height={1000}
-                                                    width={1000}
-                                                    className='max-w-[400px] w-full aspect-square object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl transition-all duration-200 ease-in-out group-hover:shadow-[8px_8px_16px_#0772DC]'
-                                                />
-                                                <div className='absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl pointer-events-none' />
-                                                <Link href={`${service.href}`}>
-                                                    <Button className='opacity-0 group-hover:opacity-100 px-8 h-12 md:px-10 md:h-14 rounded-full cursor-pointer absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#0772DC] font-bold bg-[#031221] text-sm md:text-base lg:text-[18px] shadow-[inset_3px_3px_5px_#0772DC,inset_-3px_3px_5px_#0772DC] hover:bg-black transition-all ease-in-out duration-200 hover:text-white'>
-                                                        Explore
-                                                    </Button>
-                                                </Link>
-                                            </div>
-                                        </div>
-
-                                    ))}
+            <Container>
+                {displayImages.length > 0 ? (
+                    <section className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 md:mt-10'>
+                        {displayImages.map((imgSrc, index) => (
+                            <div key={index} className='group relative rounded-2xl overflow-hidden bg-[#031221]/40 backdrop-blur-lg border border-white/15 transition-all duration-300 hover:border-white/35'>
+                                <div className='relative w-full aspect-3/4 overflow-hidden'>
+                                    <Image
+                                        src={imgSrc}
+                                        alt="Product Image"
+                                        width={800}
+                                        height={1000}
+                                        className='w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105'
+                                    />
                                 </div>
+                                {/* <div className='absolute bottom-4 right-4 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10'>
+                                    <p className='text-white font-bold text-sm tracking-wide'>
+                                        {product.price}
+                                    </p>
+                                </div> */}
                             </div>
-                        ))
-                    }
-                </div>
-            </div>
+                        ))}
+                    </section>
+                ) : (
+                    <div className='w-full flex justify-center items-center py-20'>
+                        <p className='text-white/60 text-lg md:text-xl font-medium'>
+                            No results found.
+                        </p>
+                    </div>
+                )}
+            </Container>
         </main>
     )
 }

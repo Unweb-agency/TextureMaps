@@ -7,6 +7,7 @@ import { Textarea } from '../ui/textarea'
 import { Button } from '../ui/button'
 import { z } from 'zod'
 import { toast } from 'sonner'
+import { sendContactEmail } from '@/actions/contact'
 
 const libreBaskerville = Libre_Baskerville({
     weight: ["400"],
@@ -34,6 +35,8 @@ type ContactFormType = z.infer<typeof ContactSchema>
 type ErrorType = Partial<Record<keyof ContactFormType, string>>
 
 const ContactForm = () => {
+    const [isLoading, setIsLoading] = useState(false) 
+
     const [form, setForm] = useState<ContactFormType>({
         name: "",
         email: "",
@@ -48,7 +51,7 @@ const ContactForm = () => {
         setErrors(prev => ({ ...prev, [name]: "" }))
     }
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         const result = ContactSchema.safeParse(form)
@@ -63,6 +66,19 @@ const ContactForm = () => {
 
             setErrors(fieldErrors)
             toast.error("Error submitting form", {
+                className: "bg-red-500 text-white shadow-none border border-red-400",
+            })
+            return
+        }
+
+        setIsLoading(true)
+
+        const response = await sendContactEmail(form)
+
+        setIsLoading(false)
+
+        if (!response.success) {
+            toast.error(response.error || "Failed to send message", {
                 className: "bg-red-500 text-white shadow-none border border-red-400",
             })
             return
@@ -108,6 +124,7 @@ const ContactForm = () => {
                                 value={form.name}
                                 onChange={handleChange}
                                 type="text"
+                                disabled={isLoading}
                                 placeholder='Name'
                                 className='w-full bg-[#D9D9D9]/20 rounded-full outline-none border-none px-4 sm:px-6 md:px-8 lg:px-10 font-semibold placeholder:text-white/50 text-neutral-300 text-sm md:text-base lg:text-[18px] py-3'
                             />
@@ -125,6 +142,7 @@ const ContactForm = () => {
                                 value={form.email}
                                 onChange={handleChange}
                                 type="text"
+                                disabled={isLoading}
                                 placeholder='Email'
                                 className='w-full bg-[#D9D9D9]/20 rounded-full outline-none border-none px-4 sm:px-6 md:px-8 lg:px-10 font-semibold placeholder:text-white/50 text-neutral-300 text-sm md:text-base lg:text-[18px] py-3'
                             />
@@ -141,6 +159,7 @@ const ContactForm = () => {
                                 name="message"
                                 value={form.message}
                                 onChange={handleChange}
+                                disabled={isLoading}
                                 placeholder='Message'
                                 className='w-full bg-[#D9D9D9]/20 rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl outline-none border-none px-4 sm:px-6 md:px-8 lg:px-10 font-semibold placeholder:text-white/50 text-neutral-300 text-sm md:text-base lg:text-[18px] py-3'
                             />
@@ -150,9 +169,10 @@ const ContactForm = () => {
                     <div className='flex w-full justify-center items-center mt-5 sm:mt-6 md:mt-8 lg:mt-10'>
                         <Button
                             type="submit"
-                            className='text-white bg-linear-to-b from-[#031221] to-[#0772DC] max-w-[400px] w-full rounded-full h-14 md:h-16 text-base sm:text-[17px] md:text-[18px] lg:text-[20px] font-semibold cursor-pointer'
+                            disabled={isLoading}
+                            className='text-white bg-linear-to-b from-[#031221] to-[#0772DC] max-w-[400px] w-full rounded-full h-14 md:h-16 text-base sm:text-[17px] md:text-[18px] lg:text-[20px] font-semibold cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed'
                         >
-                            Send Message
+                            {isLoading ? "Sending..." : "Send Message"}
                         </Button>
                     </div>
                 </form>

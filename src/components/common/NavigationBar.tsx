@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 
 const navigationButtons = [
     { buttonName: "Home", href: "/" },
-    { buttonName: "Services", href: "/services" },
+    // { buttonName: "Services", href: "#services" },
     { buttonName: "About Us", href: "/about-us" },
     { buttonName: "Contact", href: "/contact" },
     { buttonName: "Book Call", href: "/book-call" },

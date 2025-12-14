@@ -1,6 +1,7 @@
 export const service_data = [
     {
         service_name: "Fashion Design",
+        service_desc: "End-to-end design built around your vision",
         serviceImages: [
             "/services/fashion-design/1.png",
             "/services/fashion-design/2.png",
@@ -16,6 +17,7 @@ export const service_data = [
     },
     {
         service_name: "E-commerce Imagery",
+        service_desc: "High-impact visuals optimized for online sales",
         serviceImages: [
             "/services/ecomm-imagery/1.png",
             "/services/ecomm-imagery/2.png",
@@ -24,6 +26,7 @@ export const service_data = [
     },
     {
         service_name: "Prints",
+        service_desc: "Exclusive artworks designed for your brand",
         serviceImages: [
             "/services/prints/26SZ0363_312_1.png",
             "/services/prints/Blue Abstract-1.png",
@@ -41,6 +44,7 @@ export const service_data = [
     },
     {
         service_name: "Graphics", 
+        service_desc: "Custom graphic assets tailored to your identity",
         serviceImages: [
             "/services/graphics/1.jpeg",
             "/services/graphics/2.jpeg",
@@ -62,12 +66,14 @@ export const service_data = [
     },
     {
         service_name: "Virtual/Physical Fitting",
+        service_desc: "Accurate fit visualization, digital to real",
         serviceImages: [
             "/services/virtual-fitting/001.jpg"
         ]
     },
     {
         service_name: "Techpack Creations",
+        service_desc: "Production-ready specifications with precision",
         serviceImages: [
             
         ]
