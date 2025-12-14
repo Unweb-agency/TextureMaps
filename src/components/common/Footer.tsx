@@ -30,7 +30,7 @@ const navigationLinks = [
         inputs: [
             { link: "FAQ", href: "/faq" },
             { link: "Privacy Policy", href: "/privacy-policy" },
-            { link: "Terms & Conditions", href: "/terms-and-conditons" },
+            { link: "Terms & Conditions", href: "/terms-and-conditions" },
         ]
     },
 ]
