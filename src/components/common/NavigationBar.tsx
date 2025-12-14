@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 
 const navigationButtons = [
     { buttonName: "Home", href: "/" },
-    // { buttonName: "Services", href: "#services" },
+    // { buttonName: "Services", href: "/services" },
     { buttonName: "About Us", href: "/about-us" },
     { buttonName: "Contact", href: "/contact" },
     { buttonName: "Book Call", href: "/book-call" },
@@ -16,6 +16,8 @@ const navigationButtons = [
 
 const NavigationBar = () => {
     const pathname = usePathname()
+
+    const CALLink = process.env.NEXT_PUBLIC_CAL_DOT_COM_LINK || "#"
 
     // Toggle Mobile Menu
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,9 +33,10 @@ const NavigationBar = () => {
 
                     {navigationButtons.map((button, index) => {
                         const isActive = pathname === button.href
-
-                        // Special styling for "Book Call"
                         const isBookCall = button.buttonName === "Book Call"
+                        const finalHref = isBookCall ? CALLink : button.href
+                        const target = isBookCall ? "_blank" : undefined
+                        const rel = isBookCall ? "noopener noreferrer" : undefined
 
                         const spanClasses = `text-white py-2.5 px-5 rounded-full font-semibold text-xs md:text-sm lg:text-base transition ${isBookCall
                             ? "bg-transparent border border-white hover:bg-[#0772DC33]/90"
@@ -42,7 +45,7 @@ const NavigationBar = () => {
                                 : "bg-transparent"}`
 
                         return (
-                            <Link key={index} href={button.href}>
+                            <Link key={index} href={finalHref} target={target} rel={rel} onClick={closeMenu}>
                                 <span className={spanClasses.trim()}>
                                     {button.buttonName}
                                 </span>
@@ -74,6 +77,9 @@ const NavigationBar = () => {
                             {navigationButtons.map((button, index) => {
                                 const isActive = pathname === button.href
                                 const isBookCall = button.buttonName === "Book Call"
+                                const finalHref = isBookCall ? CALLink : button.href
+                                const target = isBookCall ? "_blank" : undefined
+                                const rel = isBookCall ? "noopener noreferrer" : undefined
 
                                 const spanClasses = `text-white py-2.5 px-5 rounded-full font-semibold text-base transition ${isBookCall
                                     ? "bg-transparent border border-white hover:bg-[#0772DC33]/90"
@@ -83,9 +89,7 @@ const NavigationBar = () => {
 
                                 return (
                                     <Link
-                                        key={index}
-                                        href={button.href}
-                                        onClick={closeMenu}
+                                        key={index} href={finalHref} target={target} rel={rel} onClick={closeMenu}
                                         className={`transition-all duration-700 delay-100 ${isMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"}`}
                                     >
                                         <span className={spanClasses.trim()}>
