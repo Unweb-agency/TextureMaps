@@ -8,6 +8,7 @@ import { Button } from '../ui/button'
 import { z } from 'zod'
 import { toast } from 'sonner'
 import { sendContactEmail } from '@/actions/contact'
+import { WateryReveal } from '@/style/SmoothReveal'
 
 const libreBaskerville = Libre_Baskerville({
     weight: ["400"],
@@ -35,7 +36,7 @@ type ContactFormType = z.infer<typeof ContactSchema>
 type ErrorType = Partial<Record<keyof ContactFormType, string>>
 
 const ContactForm = () => {
-    const [isLoading, setIsLoading] = useState(false) 
+    const [isLoading, setIsLoading] = useState(false)
 
     const [form, setForm] = useState<ContactFormType>({
         name: "",
@@ -104,13 +105,15 @@ const ContactForm = () => {
                     onSubmit={handleSubmit}
                     className='flex flex-col justify-center items-center text-center bg-[#09203733] backdrop-blur-2xl p-4 sm:p-6 rounded-2xl md:rounded-3xl lg:rounded-4xl'
                 >
-                    <h1 className={`${libreBaskerville.className} font-normal text-3xl sm:text-[30px] md:text-[35px] lg:text-[42px] text-white`}>
-                        contact form
-                    </h1>
-                    <p className='max-w-[450px] w-full font-normal text-[#FFFFFF] text-sm sm:text-base md:text-[18px] lg:text-[20px] mt-2'>
-                        Let&apos;s Talk About Your Next Move in Digital Fashion. We usually reply within 48 hours.
-                    </p>
+                    <WateryReveal>
+                        <h1 className={`${libreBaskerville.className} font-normal text-3xl sm:text-[30px] md:text-[35px] lg:text-[42px] text-white`}>
+                            contact form
+                        </h1>
+                        <p className='max-w-[450px] w-full font-normal text-[#FFFFFF] text-sm sm:text-base md:text-[18px] lg:text-[20px] mt-2'>
+                            Let&apos;s Talk About Your Next Move in Digital Fashion. We usually reply within 48 hours.
+                        </p>
 
+                    </WateryReveal>
                     <div className='max-w-[1100px] w-full flex flex-col mt-8 md:mt-10 gap-8 sm:gap-9 md:gap-10 lg:gap-12'>
                         {/* Name */}
                         <div className='flex flex-col justify-start items-start gap-1.5'>

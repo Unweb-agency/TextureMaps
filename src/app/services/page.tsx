@@ -1,12 +1,13 @@
 'use client'
-import React, { useState, useEffect } from 'react' 
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Container from '@/style/Container'
 import Image from 'next/image'
 import { PencilLine } from 'lucide-react'
-import { usePathname, useSearchParams } from 'next/navigation' 
+import { usePathname, useSearchParams } from 'next/navigation'
 import { service_data } from '../../../jsons/service-data'
 import HeroCommon from '@/style/HeroCommon'
+import { WateryReveal } from '@/style/SmoothReveal'
 
 // const filterOptions = ["kids", "men", "women"]
 
@@ -21,10 +22,10 @@ const dropdownOptions = [
 
 const Page = () => {
     // const [activeFilter, setActiveFilter] = useState("men")
-    const pathname = usePathname() 
+    const pathname = usePathname()
     const searchParams = useSearchParams()
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-    
+
     const [selectedCategory, setSelectedCategory] = useState(dropdownOptions[0])
 
     useEffect(() => {
@@ -45,8 +46,8 @@ const Page = () => {
         }
     }, [pathname])
 
-    const currentServiceData = service_data.find((item) => 
-        item.service_name === selectedCategory || 
+    const currentServiceData = service_data.find((item) =>
+        item.service_name === selectedCategory ||
         (selectedCategory === "Techpack Creation" && item.service_name === "Techpack Creations")
     );
 
@@ -60,12 +61,14 @@ const Page = () => {
             </div>
 
             <div className='w-full mt-6 flex flex-col gap-y-1.5 justify-center items-center text-center bg-linear-to-b from-[#043D76] to-[#0772DC] p-4 md:p-6 rounded-xl md:rounded-2xl lg:rounded-3xl backdrop-blur-lg'>
-                <h1 className='font-bold text-white text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]'>
-                   {currentServiceData ? currentServiceData.service_name : selectedCategory}
-                </h1>
+                <WateryReveal>
+                    <h1 className='font-bold text-white text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]'>
+                        {currentServiceData ? currentServiceData.service_name : selectedCategory}
+                    </h1>
                     <p className='font-bold text-[#ACACAC] text-sm sm:text-base md:text-[17px] lg:text-[18px]'>
-                    {currentServiceData ? currentServiceData.service_desc : ""}
-                </p>
+                        {currentServiceData ? currentServiceData.service_desc : ""}
+                    </p>
+                </WateryReveal>
             </div>
 
             {/* Service Category Filter */}
@@ -142,15 +145,17 @@ const Page = () => {
                     <section className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 md:mt-10'>
                         {displayImages.map((imgSrc, index) => (
                             <div key={index} className='group relative rounded-2xl overflow-hidden bg-[#031221]/40 backdrop-blur-lg border border-white/15 transition-all duration-300 hover:border-white/35'>
-                                <div className='relative w-full aspect-3/4 overflow-hidden'>
-                                    <Image
-                                        src={imgSrc}
-                                        alt="Product Image"
-                                        width={800}
-                                        height={1000}
-                                        className='w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105'
-                                    />
-                                </div>
+                                <WateryReveal>
+                                    <div className='relative w-full aspect-3/4 overflow-hidden'>
+                                        <Image
+                                            src={imgSrc}
+                                            alt="Product Image"
+                                            width={800}
+                                            height={1000}
+                                            className='w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105'
+                                        />
+                                    </div>
+                                </WateryReveal>
                                 {/* <div className='absolute bottom-4 right-4 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10'>
                                     <p className='text-white font-bold text-sm tracking-wide'>
                                         {product.price}

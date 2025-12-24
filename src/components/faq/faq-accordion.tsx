@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Container from '@/style/Container'
 import { Plus, Minus } from 'lucide-react'
 import { FAQdata } from '../../../jsons/faq-data'
+import { WateryReveal } from '@/style/SmoothReveal'
 
 interface FAQItem {
     question: string
@@ -33,9 +34,11 @@ const FaqAccordion: React.FC = () => {
                                             cursor-pointer bg-white/5 backdrop-blur-md border border-white/10`}
                                     onClick={() => handleToggle(index)}
                                 >
-                                    <span className='text-neutral-200 font-semibold text-sm sm:text-base md:text-[17px] lg:text-[19px]'>
+                                    <WateryReveal>
+                                        <span className='text-neutral-200 font-semibold text-sm sm:text-base md:text-[17px] lg:text-[19px]'>
                                         {faqData.question}
                                     </span>
+                                    </WateryReveal>
                                     <span className='text-white bg-black/15 p-2 rounded-full hover:bg-black/30 transition-all ease-in-out duration-200'>
                                         {isOpen ? <Minus className='h-3.5 sm:h-4.5 md:h-5 lg:h-5.5 w-auto' /> : <Plus className='h-3.5 sm:h-4.5 md:h-5 lg:h-5.5 w-auto' />}
                                     </span>

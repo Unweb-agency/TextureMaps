@@ -2,18 +2,21 @@ import React from 'react'
 import Image from 'next/image'
 import models from "../../../public/images/group_models.png"
 import Container from '@/style/Container'
+import { WateryReveal } from '@/style/SmoothReveal'
 
 const ModelsGroupBanner = () => {
     return (
         <section className='w-full flex flex-col justify-center items-center mt-[100px] sm:mt-[115px] md:mt-[135px] lg:mt-[150px] px-4 sm:px-6 md:px-8 lg:px-10 gap-[-10px]'>
             <Container>
-                <Image
-                    src={models}
-                    alt='models group banner'
-                    height={1000}
-                    width={1000}
-                    className='ml-3 sm:ml-3.5 object-cover w-full h-full'
-                />
+                <WateryReveal>
+                    <Image
+                        src={models}
+                        alt='models group banner'
+                        height={1000}
+                        width={1000}
+                        className='ml-3 sm:ml-3.5 object-cover w-full h-full'
+                    />
+                </WateryReveal>
             </Container>
 
             {/* Glowing Shadown Boxes */}

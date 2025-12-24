@@ -4,18 +4,23 @@ import ThreeDMockups from '@/components/home/threeD-mockups'
 import React from 'react'
 import BlockContainer from '@/components/home/block'
 import ModelsGroupBanner from '@/components/home/models-group'
+import { WateryReveal } from '@/style/SmoothReveal'
 
 const page = () => {
   return (
     <main>
       {/* Hero section */}
-      <Hero />
+      <WateryReveal>
+        <Hero />
+      </WateryReveal>
 
       {/* Our services */}
       <OurServices />
 
       {/* 3-D Moackups section with video */}
-      <ThreeDMockups />
+      <WateryReveal>
+        <ThreeDMockups />
+      </WateryReveal>
 
       {/* About Us */}
       {/* Why Choose Us */}
