@@ -37,13 +37,13 @@ const OurServices = () => {
                                 <div className='flex flex-col justify-between items-center text-center'>
                                     <h3 className='uppercase text-[#0772DC] font-bold text-[17px] md:text-[18px] lg:text-[20px]'> {serviceData.title} </h3>
                                     <p className='text-[#D9D9D9] font-bold leading-normal text-sm md:text-base lg:text-[18px] mt-3'> {serviceData.content} </p>
-                                    <div className='group relative flex flex-row mt-8'>
+                                    <div className='group relative flex flex-row mt-8 items'>
                                         <Image
                                             src={`${serviceData.imgURL}`}
                                             alt={`${serviceData.title}`}
                                             height={1000}
                                             width={1000}
-                                            className='max-w-[400px] w-full aspect-square object-cover rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl transition-all duration-200 ease-in-out shadow-[8px_8px_16px_#0772DC] md:shadow-none md:group-hover:shadow-[8px_8px_16px_#0772DC]'
+                                            className='max-w-[400px] w-full aspect-square object-contain rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl transition-all duration-200 ease-in-out shadow-[8px_8px_16px_#0772DC] md:shadow-none md:group-hover:shadow-[8px_8px_16px_#0772DC]'
                                         />
                                         <div className='absolute inset-0 bg-black/50 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl pointer-events-none' />
                                         <Link href={`${serviceData.redirectURL}`}>

@@ -12,22 +12,22 @@ const SocialBar = () => {
     return (
         <main className='w-full flex flex-row flex-wrap justify-between items-center gap-5 bg-[#092037] backdrop-blur-md px-4 sm:px-6 md:px-8 lg:px-10 py-3.5 sm:py-4 md:py-5 lg:py-8 rounded-lg sm:rounded-xl md:rounded-2xl lg:rounded-3xl'>
             <div className='flex flex-row flex-wrap gap-x-5 gap-y-3 justify-between items-center max-w-[650px] w-full'>
-                <div className='flex flex-row justify-center items-baseline gap-3 sm:gap-4 md:gap-5'>
-                    <WateryReveal>
+                <WateryReveal>
+                    <div className='flex flex-row justify-center items-baseline gap-3 sm:gap-4 md:gap-5'>
                         <label className='text-white leading-tight sm:text-[18px] md:text-[20px] lg:text-[22px] font-bold'>Email Us:</label>
                         <Link href={"mailto:sachin@texturemaps.co.in"}>
-                            <span className='font-light italic text-[#0772DC] text-sm sm:text-base md:text-[17px] lg:text-[18px] hover:underline transition-all duration-200 ease-in-out '>sachin@texturemaps.co.in</span>
+                            <span className='font-semibold italic text-[#0772DC] text-sm sm:text-base md:text-[17px] lg:text-[18px] hover:underline transition-all duration-200 ease-in-out '>sachin@texturemaps.co.in</span>
                         </Link>
-                    </WateryReveal>
-                </div>
-                <div className='flex flex-row justify-center items-baseline gap-3 sm:gap-4 md:gap-5'>
-                    <WateryReveal>
+                    </div>
+                </WateryReveal>
+                <WateryReveal>
+                    <div className='flex flex-row justify-center items-baseline gap-3 sm:gap-4 md:gap-5'>
                         <label className='text-white leading-tight sm:text-[18px] md:text-[20px] lg:text-[22px] font-bold'>Call Us:</label>
                         <Link href={"tel:919891541403"}>
-                            <span className='font-light italic text-[#0772DC] text-sm sm:text-base md:text-[17px] lg:text-[18px] hover:underline transition-all duration-200 ease-in-out '>+91 9891541403</span>
+                            <span className='font-semibold italic text-[#0772DC] text-sm sm:text-base md:text-[17px] lg:text-[18px] hover:underline transition-all duration-200 ease-in-out '>+91 9891541403</span>
                         </Link>
-                    </WateryReveal>
-                </div>
+                    </div>
+                </WateryReveal>
             </div>
 
             <div className='flex flex-row justify-center items-center gap-4 sm:gap-5 md:gap-6'>
@@ -35,14 +35,14 @@ const SocialBar = () => {
                     socialIcons.map((icon, index) => (
                         <WateryReveal key={index}>
                             <Link href={`${icon.href}`} target='_blank'>
-                            <Image
-                                src={`${icon.iconImageURL}`}
-                                alt={`${icon.name}`}
-                                height={1000}
-                                width={1000}
-                                className='h-6.5 md:h-7 lg:h-9 w-auto object-cover hover:scale-115 transition-all ease-in-out duration-200 cursor-pointer'
-                            />
-                        </Link>
+                                <Image
+                                    src={`${icon.iconImageURL}`}
+                                    alt={`${icon.name}`}
+                                    height={1000}
+                                    width={1000}
+                                    className='h-6.5 md:h-7 lg:h-9 w-auto object-cover hover:scale-115 transition-all ease-in-out duration-200 cursor-pointer'
+                                />
+                            </Link>
                         </WateryReveal>
                     ))
                 }

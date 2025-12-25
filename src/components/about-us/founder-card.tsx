@@ -15,7 +15,7 @@ const MeetOurFounderCard = () => {
                                 Let&apos;s meet the Founder !
                             </h1>
                             <p className='text-[#0772DC] font-medium italic text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-5'>
-                                Sachin Surekha
+                                Sachin Sureka
                             </p>
                         </WateryReveal>
                     </div>
@@ -50,7 +50,7 @@ const MeetOurFounderCard = () => {
                             “ Texturemaps envision a sustainable, innovation driven fashion industry that cares for our planet and caters to its consumers efficiently and effectively. “
                         </h2>
                         <p className='italic font-semibold text-[#D9D9D9] mt-3 md:mt-5 text-sm sm:text-base md:text-[18px] lg:text-[120x]'>
-                            - Sachin Surekha
+                            - Sachin Sureka
                         </p>
                     </WateryReveal>
                 </div>

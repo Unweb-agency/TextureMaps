@@ -60,16 +60,18 @@ const Page = () => {
                 <HeroCommon title='Our Services' para='What began as one person&apos;s passion to merge creativity with innovation has grown into a brand that&apos;s redefining how the world sees and builds fashion — smarter, faster, and more sustainable.' />
             </div>
 
-            <div className='w-full mt-6 flex flex-col gap-y-1.5 justify-center items-center text-center bg-linear-to-b from-[#043D76] to-[#0772DC] p-4 md:p-6 rounded-xl md:rounded-2xl lg:rounded-3xl backdrop-blur-lg'>
-                <WateryReveal>
-                    <h1 className='font-bold text-white text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]'>
-                        {currentServiceData ? currentServiceData.service_name : selectedCategory}
-                    </h1>
-                    <p className='font-bold text-[#ACACAC] text-sm sm:text-base md:text-[17px] lg:text-[18px]'>
-                        {currentServiceData ? currentServiceData.service_desc : ""}
-                    </p>
-                </WateryReveal>
-            </div>
+            <Container>
+                <div className='w-full mt-6 flex flex-col gap-y-1.5 justify-center items-center text-center bg-linear-to-b from-[#043D76] to-[#0772DC] p-4 md:p-6 rounded-xl md:rounded-2xl lg:rounded-3xl backdrop-blur-lg'>
+                    <WateryReveal>
+                        <h1 className='font-bold text-white text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]'>
+                            {currentServiceData ? currentServiceData.service_name : selectedCategory}
+                        </h1>
+                        <p className='font-bold text-[#ACACAC] text-sm sm:text-base md:text-[17px] lg:text-[18px]'>
+                            {currentServiceData ? currentServiceData.service_desc : ""}
+                        </p>
+                    </WateryReveal>
+                </div>
+            </Container>
 
             {/* Service Category Filter */}
             <div className='fixed right-5 md:right-8 top-1/2 -translate-y-1/2 z-50 flex flex-col items-end'>
@@ -152,7 +154,7 @@ const Page = () => {
                                             alt="Product Image"
                                             width={800}
                                             height={1000}
-                                            className='w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105'
+                                            className='w-full h-full object-contain transition-transform duration-700 ease-in-out group-hover:scale-105'
                                         />
                                     </div>
                                 </WateryReveal>
