@@ -25,10 +25,9 @@ const Page = () => {
                   className="group flex flex-row items-start gap-4 md:gap-6 border-b border-white/5 pb-6 last:border-none last:pb-0"
                 >
                   <WateryReveal>
-                    <span className="flex items-center justify-center shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0772DC]/20 text-[#0772DC] font-bold text-lg md:text-xl border border-[#0772DC]/50 shadow-[0_0_10px_rgba(7,114,220,0.3)]">
-                      {index + 1}
-                    </span>
-
+                      <span className=" text-[#0772DC] font-bold text-lg md:text-xl border ">
+                        {index + 1}
+                      </span>
                     <p className="text-[#D9D9D9] text-base sm:text-lg md:text-[19px] leading-relaxed font-medium mt-1.5">
                       {point}
                     </p>

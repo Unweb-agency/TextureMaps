@@ -58,16 +58,22 @@ const Page = () => {
         <HeroCommon title="Our Services" />
       </div>
       <Container>
-        <div className="w-full mt-6 flex flex-col gap-y-1.5 justify-center items-center text-center bg-linear-to-b from-[#043D76] to-[#0772DC] p-4 md:p-6 rounded-xl md:rounded-2xl lg:rounded-3xl backdrop-blur-lg">
+        <div className="w-full flex flex-col gap-y-1.5 justify-center items-center text-center  p-4 md:p-6 rounded-xl md:rounded-2xl lg:rounded-3xl backdrop-blur-lg">
           <WateryReveal>
-            <h1 className="font-bold text-white text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
-              {currentServiceData
-                ? currentServiceData.service_name
-                : selectedCategory}
-            </h1>
-            <p className="font-bold text-[#ACACAC] text-sm sm:text-base md:text-[17px] lg:text-[18px]">
-              {currentServiceData ? currentServiceData.service_desc : ""}
-            </p>
+            <div className="w-full flex justify-center items-center">
+              <div className="relative min-w-[330px] p-2 bg-linear-to-r from-[#031221] to-[#0C4A87] rounded-full sm:w-[380px] md:w-[500px] lg:w-[800px] max-w-full ">
+                <div className="py-2 text-center bg-linear-to-b from-[#031221] to-[#0772DC] uppercase w-full  rounded-full  text-base ">
+                  <h1 className="font-bold text-white text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
+                    {currentServiceData
+                      ? currentServiceData.service_name
+                      : selectedCategory}
+                  </h1>{" "}
+                  <h3 className="font-bold text-[#ACACAC] text-[10px] sm:text-[12px] md:text-[15px] lg:text-[18px]">
+                    {currentServiceData ? currentServiceData.service_desc : ""}
+                  </h3>
+                </div>
+              </div>
+            </div>
           </WateryReveal>
         </div>
       </Container>
@@ -117,7 +123,7 @@ const Page = () => {
 
       <Container>
         {displayImages.length > 0 ? (
-          <section className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 md:mt-10">
+          <section className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8 md:mt-10">
             {displayImages.map((imgSrc, index) => (
               <div
                 key={index}

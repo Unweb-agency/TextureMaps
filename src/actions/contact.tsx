@@ -21,22 +21,36 @@ export async function sendContactEmail(formData: ContactFormType) {
     return { success: false, error: "Invalid form data" };
   }
 
-  try {
-    const { name, email, message } = result.data;
+  const { name, email, message } = result.data;
 
-    const data = await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
+  try {
+    // 1️⃣ Send email to YOU (Admin)
+    await resend.emails.send({
+      from: "TextureMaps <support@texturemaps.co.in>",
       to: ["sachinsureka375@gmail.com"],
-      subject: `New Message from ${name}`,
+      subject: `New Contact Message from ${name}`,
       replyTo: email,
       react: <EmailTemplate name={name} email={email} message={message} />,
     });
 
-    if (data.error) {
-      return { success: false, error: data.error.message };
-    }
+    // 2️⃣ Send confirmation email to CUSTOMER
+    await resend.emails.send({
+      from: "TextureMaps <support@texturemaps.co.in>",
+      to: [email],
+      subject: "Thanks for contacting TextureMaps!",
+      react: (
+        <div>
+          <p>Hi {name},</p>
+          <p>
+            Thanks for reaching out! We’ve received your message and will get
+            back to you shortly.
+          </p>
+          <p>— Team TextureMaps</p>
+        </div>
+      ),
+    });
 
-    return { success: true, data };
+    return { success: true };
   } catch (error) {
     console.error("RESEND ERROR:", error);
     return { success: false, error: "Failed to send email" };
