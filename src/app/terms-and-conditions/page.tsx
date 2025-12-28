@@ -21,11 +21,11 @@ const Page = () => {
       <Container>
         <section className="w-full bg-radial from-[#0772DC] via-[#0920371A] to-[#02100E66] mt-8 sm:mt-10 md:mt-14 lg:mt-16 rounded-2xl md:rounded-3xl lg:rounded-4xl blur-in-3xl shadow-[1px_1px_20px_#0772DC]">
           <div className="flex flex-col justify-center items-center text-start bg-[#09203733] backdrop-blur-2xl p-4 sm:p-6 rounded-2xl md:rounded-3xl lg:rounded-4xl gap-y-6 sm:gap-y-7 md:gap-y-8 lg:gap-y-9">
-            <ol className="flex flex-col gap-y-6 sm:gap-y-8 w-full">
+            <ol className="flex flex-col gap-y-2 sm:gap-y-4 w-full">
               {termsAndConditions.map((point, index) => (
                 <li
                   key={index}
-                  className="group flex flex-row items-start gap-4 md:gap-6 border-b border-white/5 pb-6 last:border-none last:pb-0"
+                  className="group flex flex-row items-start gap-4 md:gap-6 border-b border-white/5 pb-4 last:border-none last:pb-0"
                 >
                   <WateryReveal>
                     <span className="flex items-center justify-center shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0772DC]/20 text-[#0772DC] font-bold text-lg md:text-xl border border-[#0772DC]/50 shadow-[0_0_10px_rgba(7,114,220,0.3)]">

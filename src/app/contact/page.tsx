@@ -7,7 +7,7 @@ import BookCall from "@/components/contact/book-call";
 const page = () => {
   return (
     <main className="relative">
-      <div className="px-4 md:px-6 mt-10 sm:mt-5 translate-y-0 md:-mt-24 z-10">
+      <div className="px-4 md:px-6 mt-10 sm:mt-20 translate-y-0 md:mt-10 z-10">
         <HeroCommon title="Let's connect" />
       </div>
 

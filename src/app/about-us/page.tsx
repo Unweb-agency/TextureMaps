@@ -1,21 +1,21 @@
-import Container from "@/style/Container";
+// import Container from "@/style/Container";
 import HeroCommon from "@/style/HeroCommon";
-import Image from "next/image";
-import modelWithOutfit from "../../../public/about-us/outfit_model.png";
-import title_textureMap from "../../../public/about-us/texturemap_title.png";
+// import Image from "next/image";
+// import modelWithOutfit from "../../../public/about-us/outfit_model.png";
+// import title_textureMap from "../../../public/about-us/texturemap_title.png";
 import React from "react";
 import MeetOurFounderCard from "@/components/about-us/founder-card";
 import SocialBar from "@/components/common/SocialBar";
-import { WateryReveal } from "@/style/SmoothReveal";
+// import { WateryReveal } from "@/style/SmoothReveal";
 
 const page = () => {
   return (
-    <main className="relative">
-      <div className="px-4 md:px-6 mt-10 sm:mt-5 translate-y-0 md:-mt-24 z-10">
+    <main className="relative  pb-10 md:pb-16 lg:pb-10 overflow-hidden">
+      <div className="px-4 md:px-6 z-10">
         <HeroCommon title="Our Story" />
       </div>
 
-      <Container>
+      {/* <Container>
         <div className="flex flex-col md:flex-row justify-center items-center text-center mt-10 gap-y-8">
           <Image
             src={modelWithOutfit}
@@ -60,7 +60,7 @@ const page = () => {
             </WateryReveal>
           </div>
         </div>
-      </Container>
+      </Container> */}
 
       <MeetOurFounderCard />
 

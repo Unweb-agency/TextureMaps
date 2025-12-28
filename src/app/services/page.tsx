@@ -9,19 +9,14 @@ import { service_data } from "../../../jsons/service-data";
 import HeroCommon from "@/style/HeroCommon";
 import { WateryReveal } from "@/style/SmoothReveal";
 
-// const filterOptions = ["kids", "men", "women"]
-
 const dropdownOptions = [
   "Fashion Design",
   "Prints",
   "Graphics",
-  "Techpack Creation",
   "E-commerce Imagery",
-  "Virtual/Physical Fitting",
 ];
 
 const Page = () => {
-  // const [activeFilter, setActiveFilter] = useState("men")
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -59,23 +54,9 @@ const Page = () => {
 
   return (
     <main className="relative px-4 md:px-6 pb-20">
-      <div className="mt-10 sm:mt-5 translate-y-0 md:mt-24 z-10">
+      <div className="mt-10 sm:mt-5 translate-y-0 md:mt-12 z-10 pb-6">
         <HeroCommon title="Our Services" />
       </div>
-      {/* 
-      <div className="w-full mt-6 flex flex-col gap-y-1.5 justify-center items-center text-center bg-linear-to-b from-[#043D76] to-[#0772DC] p-4 md:p-6 rounded-xl md:rounded-2xl lg:rounded-3xl backdrop-blur-lg">
-        <WateryReveal>
-          <h1 className="font-bold text-white text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px]">
-            {currentServiceData
-              ? currentServiceData.service_name
-              : selectedCategory}
-          </h1>
-          <p className="font-bold text-[#ACACAC] text-sm sm:text-base md:text-[17px] lg:text-[18px]">
-            {currentServiceData ? currentServiceData.service_desc : ""}
-          </p>
-        </WateryReveal>
-      </div> */}
-
       <Container>
         <div className="w-full mt-6 flex flex-col gap-y-1.5 justify-center items-center text-center bg-linear-to-b from-[#043D76] to-[#0772DC] p-4 md:p-6 rounded-xl md:rounded-2xl lg:rounded-3xl backdrop-blur-lg">
           <WateryReveal>
@@ -133,35 +114,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      {/* Filter */}
-      {/* <div className='w-full flex justify-center items-center mt-14'>
-                <div className='flex flex-row justify-center items-center text-center max-w-[700px] w-full bg-black/40 rounded-full'>
-                    {
-                        filterOptions.map((option, index) => (
-                            <p
-                                onClick={() => setActiveFilter(option)}
-                                className='relative text-white font-bold p-4 rounded-full w-full cursor-pointer text-xs sm:text-sm md:text-[15px] capitalize'
-                                key={index}
-                            >
-                                {activeFilter === option && (
-                                    <motion.span
-                                        layoutId="watery-slider"
-                                        className='absolute inset-0 bg-linear-to-tl from-[#0772DC] to-[#031221] scale-115 rounded-full'
-                                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                                    />
-                                )}
-                                <span className='relative z-10'>
-                                    {option}
-                                </span>
-                            </p>
-                        ))
-                    }
-                </div>
-            </div> */}
 
-      {/* <p className='text-white italic font-semibold text-xl md:text-2xl lg:text-3xl mt-8 sm:mt-10 md:mt-12 lg:mt-14 mb-8'>
-                {selectedCategory}
-            </p> */}
       <Container>
         {displayImages.length > 0 ? (
           <section className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 md:mt-10">
@@ -178,14 +131,15 @@ const Page = () => {
                       width={800}
                       height={1000}
                       className="w-full h-full object-contain transition-transform duration-700 ease-in-out group-hover:scale-105"
+                      style={
+                        selectedCategory == "Prints" ||
+                        selectedCategory == "Graphics"
+                          ? { objectFit: "cover" }
+                          : { objectFit: "contain" }
+                      }
                     />
                   </div>
                 </WateryReveal>
-                {/* <div className='absolute bottom-4 right-4 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10'>
-                                    <p className='text-white font-bold text-sm tracking-wide'>
-                                        {product.price}
-                                    </p>
-                                </div> */}
               </div>
             ))}
           </section>
