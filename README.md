@@ -1,3 +1,2 @@
 # project texture maps
-deployed - 26 december, 2025
-cal.com integerated
+deployed - 28 december 2025
