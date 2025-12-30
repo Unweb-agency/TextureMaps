@@ -35,6 +35,7 @@ const Hero = () => {
               src="https://res.cloudinary.com/dy5z7hpqu/video/upload/v1766685104/Golf-Sportswear-category-Animation_bw2uqs.mp4"
               autoPlay
               loop
+              muted
               playsInline
               className="absolute inset-0 w-full h-full object-cover"
             />

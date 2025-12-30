@@ -43,7 +43,7 @@ const MeetOurFounderCard = () => {
               With this vision, Texturemaps was born.
             </p>
             <p className="text-white font-medium leading-tight sm:text-[18px] md:text-[20px] lg:text-[22px]">
-              What started as an idea has now grown into a dynamic team of 22
+              What started as an idea has now grown into a dynamic team of 12
               experts specializing in Print/Graphics, Design Development, Tech
               Pack Creation, 3D Mockups, E-commerce Imagery, and High-End
               Animation. Today, we proudly collaborate with leading apparel

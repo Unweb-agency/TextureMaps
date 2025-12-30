@@ -33,7 +33,7 @@ const ThreeDMockups = () => {
             className="absolute top-0 left-0 w-full h-full object-cover"
           />
         </div> */}
-        <div className="relative w-full max-w-[1400px] aspect-video mt-12 rounded-3xl overflow-hidden">
+        {/* <div className="relative w-full max-w-[1400px] aspect-video mt-12 rounded-3xl overflow-hidden">
           <video
             src="https://res.cloudinary.com/dy5z7hpqu/video/upload/v1766685104/Golf-Sportswear-category-Animation_bw2uqs.mp4"
             autoPlay
@@ -41,7 +41,7 @@ const ThreeDMockups = () => {
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
           />
-        </div>
+        </div> */}
       </section>
     </Container>
   );

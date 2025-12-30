@@ -29,7 +29,8 @@ const Page = () => {
                   <WateryReveal>
                     <p className="text-[#D9D9D9] text-base sm:text-lg md:text-[19px] leading-relaxed font-medium mt-1.5">
                       <span className="text-[#0772DC] font-bold text-lg md:text-xl">
-                        {index + 1}.{" "}
+                        {/* {index + 1}.{" "} */}
+                        &#8680;{" "}
                       </span>
                       {point}
                     </p>

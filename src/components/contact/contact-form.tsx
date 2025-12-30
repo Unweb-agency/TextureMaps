@@ -112,8 +112,8 @@ const ContactForm = () => {
               Contact form
             </h1>
             <p className="max-w-[450px] w-full font-normal text-[#FFFFFF] text-sm sm:text-base md:text-[18px] lg:text-[20px] mt-2">
-              Let&apos;s Talk About Your Next Move in Digital Fashion. We
-              usually reply within 48 hours.
+              Let&apos;s Talk about your next move in Digital Fashion. We
+              usually reply within 24 hours.
             </p>
           </WateryReveal>
           <div className="max-w-[1100px] w-full flex flex-col mt-8 md:mt-10 gap-8 sm:gap-9 md:gap-10 lg:gap-12">
