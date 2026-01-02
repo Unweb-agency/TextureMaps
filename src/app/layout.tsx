@@ -6,11 +6,12 @@ import Footer from "@/components/common/Footer";
 import { headers } from "next/headers";
 import LayoutWrapper from "@/style/LayoutWrapper";
 import { Toaster } from "sonner";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin"]
-})
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Texture Maps",
@@ -22,10 +23,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   const h = await headers();
   const pathname = h.get("x-pathname") || "/";
-  const PathIsHome = (pathname === "/")
+  const PathIsHome = pathname === "/";
 
   return (
     <html lang="en">
@@ -45,6 +45,7 @@ export default async function RootLayout({
           <div className="w-full px-4 sm:px-5 pb-3">
             <Footer />
           </div>
+          <SpeedInsights />
         </LayoutWrapper>
       </body>
     </html>
