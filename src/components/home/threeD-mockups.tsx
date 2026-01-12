@@ -1,8 +1,6 @@
 "use client";
 
 import Container from "@/style/Container";
-import Link from "next/link";
-// const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
 const ThreeDMockups = () => {
   return (
@@ -19,29 +17,6 @@ const ThreeDMockups = () => {
           and digital experiences.
         </p>
 
-        {/* Video Player */}
-        {/* <div className="relative w-[1400px] max-w-full mt-12 md:mt-14 rounded-3xl overflow-hidden aspect-video">
-          <CldVideoPlayer
-            id="hero-video" // Added unique ID to prevent instance conflicts
-            // width="1920" // Use numeric values for the aspect ratio calculation
-            // height="1080" // Component will still scale to container due to absolute class
-            src="samples/cld-sample-video"
-            autoPlay={true} // Use string "always" for robust cross-browser autoplay
-            muted={true}
-            loop={true}
-            controls={false}
-            className="absolute top-0 left-0 w-full h-full object-cover"
-          />
-        </div> */}
-        {/* <div className="relative w-full max-w-[1400px] aspect-video mt-12 rounded-3xl overflow-hidden">
-          <video
-            src="https://res.cloudinary.com/dy5z7hpqu/video/upload/v1766685104/Golf-Sportswear-category-Animation_bw2uqs.mp4"
-            autoPlay
-            loop
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        </div> */}
       </section>
     </Container>
   );

@@ -1,19 +1,8 @@
 "use client";
-// import { CldVideoPlayer } from "next-cloudinary";
+
 import Container from "@/style/Container";
-import dynamic from "next/dynamic";
 import { Button } from "../ui/button";
 import Link from "next/link";
-
-const CldVideoPlayer = dynamic(
-  () => import("next-cloudinary").then((mod) => mod.CldVideoPlayer),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="aspect-video bg-gray-900 animate-pulse rounded-3xl" />
-    ),
-  }
-);
 
 const Hero = () => {
   return (

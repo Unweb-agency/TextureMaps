@@ -38,7 +38,6 @@ const services = [
     title: "Virtual/Physical Fitting",
     content: "Perfecting Fit, Physically and Virtually.",
     imgURL: "/images/virtual_fitting.png",
-    // redirectURL: "/services?virtual-physical-fitting",
   },
   {
     title: "Ecom-Imagery",

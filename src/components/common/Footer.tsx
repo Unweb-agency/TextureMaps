@@ -1,4 +1,3 @@
-import Container from '@/style/Container'
 import Link from 'next/link';
 import Image from 'next/image';
 import arrow_gradient from "../../../public/images/arrow_gradient.png"
@@ -13,7 +12,6 @@ const navigationLinks = [
         name: "Quick Links",
         inputs: [
             { link: "Home", href: "/" },
-            // { link: "Services", href: "#services" },
             { link: "About", href: "/about-us" },
             { link: "Contact", href: "/contact" },
         ]

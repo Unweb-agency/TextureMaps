@@ -22,9 +22,6 @@ const page = () => {
         <ThreeDMockups />
       </WateryReveal>
 
-      {/* About Us */}
-      {/* Why Choose Us */}
-      {/* A studio that feels like your team */}
       <BlockContainer title='About Us' content='We are market leaders in developing digital solutions for the apparel retail industry. Our unique experience and extensive knowledge in Design, Print/graphic development, Techpack creation, Digital product creation, Ecommerce Images, Physical & virtual garment fittings & High end animations help our clients showcase and sell their collections seamlessly saving valuable time, money and resources in communication, sales and production processes.' classname='mt-[60px] sm:mt-[70px] md:mt-[85px] lg:mt-[100px]' />
 
       <BlockContainer title='Why choose us?' content='Whether you&apos;re launching your apparel brand or scaling an existing workflow, we&apos;re your creative and strategic partner every step on the way. We help businesses stitch together the right combination of tools, workflows, and creative strategy to meet their goals' classname='mt-[35px] sm:mt-10 md:mt-[45px] lg:mt-[50px]'/>
